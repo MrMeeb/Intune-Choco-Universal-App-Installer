@@ -17,6 +17,8 @@ $InstallParams = ""
 if ( $(whoami) -like "*system*" ) {
 
     Write-Host "Running as System"
+	Write-Host "Using direct path to choco"
+	$choco = "$env:ProgramData\CAW\choco\choco.exe"
 
 } else {
 	
@@ -32,7 +34,7 @@ if ($Params.Length -gt 0) {
 switch ($Action){
 	"install" {
 		try {
-			choco install --yes $AppName $InstallParams
+			&$choco install --yes $AppName $InstallParams
 		}
 		catch {
 			Write-Error -Message "Error happened during installation." -Category OperationStopped
@@ -41,11 +43,10 @@ switch ($Action){
 	}
 	"uninstall" {
 		try {
-			choco uninstall --yes $AppName
+			&$choco uninstall --yes $AppName
 		}
 		catch {
 			Write-Error -Message "Error happened during uninstallation." -Category OperationStopped
-			Write-Error $_
 		}
 	}
 }

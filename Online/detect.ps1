@@ -23,6 +23,13 @@ if ($AppName.length -lt 1){
     exit 1
 }
 
+try {
+    &$choco
+}
+catch {
+    Write-Error $_
+}
+
 $CheckInstalled = $(&$choco list $AppName)
 if ($CheckInstalled -like "*$AppName*")
     { 

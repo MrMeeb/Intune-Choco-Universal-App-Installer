@@ -24,7 +24,7 @@ if ($AppName.length -lt 1){
 }
 
 try {
-    &$choco
+    &$choco --version
 }
 catch {
     Write-Error $_

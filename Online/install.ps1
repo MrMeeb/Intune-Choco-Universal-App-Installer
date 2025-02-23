@@ -29,7 +29,7 @@ if ( $(whoami) -like "*system*" ) {
 
 if ($Params.Length -gt 0) {
 	Write-Host "Installation params declared"
-	$InstallParams = "--params `"$Params`""
+	$InstallParams = "--params `"'$Params'`""
 }
 
 switch ($Action){

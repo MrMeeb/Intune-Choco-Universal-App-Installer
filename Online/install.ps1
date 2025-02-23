@@ -23,7 +23,8 @@ if ( $(whoami) -like "*system*" ) {
 } else {
 	
 	Write-Host "Running as User"
-	
+	$choco = choco
+
 }
 
 if ($Params.Length -gt 0) {

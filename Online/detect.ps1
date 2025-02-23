@@ -8,10 +8,13 @@ param(
 if ( $(whoami) -like "*system*" ) {
 
     Write-Host "Running as System"
+	Write-Host "Using direct path to choco"
+	$choco = "$env:ProgramData\CAW\choco\choco.exe"
 
 } else {
-
-    Write-Host "Running as User"
+	
+	Write-Host "Running as User"
+	$choco = choco
 
 }
 
@@ -20,7 +23,7 @@ if ($AppName.length -lt 1){
     exit 1
 }
 
-$CheckInstalled = $(choco list $AppName)
+$CheckInstalled = $(&$choco list $AppName)
 if ($CheckInstalled -like "*$AppName*")
     { 
         Write-host "Found $AppName"

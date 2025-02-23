@@ -36,6 +36,7 @@ switch ($Action){
 		}
 		catch {
 			Write-Error -Message "Error happened during installation." -Category OperationStopped
+			Write-Error $_
 		}
 	}
 	"uninstall" {
@@ -44,6 +45,7 @@ switch ($Action){
 		}
 		catch {
 			Write-Error -Message "Error happened during uninstallation." -Category OperationStopped
+			Write-Error $_
 		}
 	}
 }

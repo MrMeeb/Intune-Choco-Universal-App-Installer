@@ -12,8 +12,6 @@ $LOGROOT="${env:ProgramFiles}\CAW\IntuneLogs\$AppName"
 
 Start-Transcript -path $LOGROOT\install.ps1.log -append
 
-$InstallParams = ""
-
 if ( $(whoami) -like "*system*" ) {
 
     Write-Host "Running as System"
@@ -27,15 +25,17 @@ if ( $(whoami) -like "*system*" ) {
 
 }
 
-if ($Params.Length -gt 0) {
-	Write-Host "Installation params declared"
-	$InstallParams = "--params `"'$Params'`""
-}
-
 switch ($Action){
 	"install" {
 		try {
-			&$choco install --yes $AppName $InstallParams
+			if ($Params.Length -gt 0) {
+				Write-Host "Installation params declared"
+				&$choco install $AppName --yes -d -v --params `"$Params`"
+			}
+			else {
+				Write-Host "$choco install $AppName --yes"
+				&$choco install $AppName --yes -d -v
+			}
 		}
 		catch {
 			Write-Error -Message "Error happened during installation." -Category OperationStopped
@@ -44,7 +44,7 @@ switch ($Action){
 	}
 	"uninstall" {
 		try {
-			&$choco uninstall --yes $AppName
+			&$choco uninstall $AppName --yes
 		}
 		catch {
 			Write-Error -Message "Error happened during uninstallation." -Category OperationStopped

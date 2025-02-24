@@ -8,9 +8,9 @@ param(
  )
 
 # Set logging dir
-$LOGROOT="${env:ProgramFiles}\CAW\IntuneLogs\$AppName"
+#$LOGROOT="${env:ProgramFiles}\CAW\IntuneLogs\$AppName"
 
-Start-Transcript -path $LOGROOT\install.ps1.log -append
+#Start-Transcript -path $LOGROOT\install.ps1.log -append
 
 if ( $(whoami) -like "*system*" ) {
 
@@ -52,4 +52,4 @@ switch ($Action){
 	}
 }
 
-Stop-Transcript
+#Stop-Transcript

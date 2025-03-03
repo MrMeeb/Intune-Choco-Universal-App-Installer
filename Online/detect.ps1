@@ -14,7 +14,8 @@ if ( $(whoami) -like "*system*" ) {
 } else {
 	
 	Write-Host "Running as User"
-	$choco = choco
+	Write-Host "Using direct path to choco"
+	$choco = "$env:ProgramData\CAW\choco\choco.exe"
 
 }
 

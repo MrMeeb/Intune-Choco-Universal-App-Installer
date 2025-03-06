@@ -39,7 +39,7 @@ $ClientID = ""
 # No further customisation needed beyond this point
 
 $SourceFolder = "$PSScriptRoot\Source"
-$SetupFile = "install.cmd"
+$SetupFile = "install.ps1"
 $OutputFolder = "$PSScriptRoot"
 
 $action = "Add"

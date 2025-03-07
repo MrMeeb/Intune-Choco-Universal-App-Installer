@@ -36,11 +36,11 @@ Invoke-Webrequest -uri https://raw.githubusercontent.com/MrMeeb/Intune-Choco-Uni
 
 if ($Params.Length -gt 0) { 
 
-  Powershell.exe -ExecutionPolicy ByPass -file "$env:TMP\install-$AppName.ps1" -Action install -AppName $AppName -Params "$Params"
+  Powershell.exe -ExecutionPolicy ByPass -WindowStyle hidden -file "$env:TMP\install-$AppName.ps1" -Action install -AppName $AppName -Params "$Params"
 
 } else {
 
-  Powershell.exe -ExecutionPolicy ByPass -file "$env:TMP\install-$AppName.ps1" -Action install -AppName $AppName
+  Powershell.exe -ExecutionPolicy ByPass -WindowStyle hidden -file "$env:TMP\install-$AppName.ps1" -Action install -AppName $AppName
 
 }
 
